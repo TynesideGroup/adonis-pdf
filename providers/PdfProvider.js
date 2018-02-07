@@ -2,15 +2,17 @@
 
 const { ServiceProvider } = require('@adonisjs/fold')
 
-class PdfProvider extends ServiceProvider {
+class PDFProvider extends ServiceProvider {
 
   register () {
-    this.app.singleton('Mannotuel/Pdf', (app) => {
-      const Pdf = require('../src/Pdf')
-      return new Pdf(app.use('Adonis/Src/Config'))
+    this.app.singleton('PDF', (app) => {
+      const Config = app.use('Adonis/Src/Config')
+      const PDF = require('../src/PDF')
+
+      return new PDF(Config)
     })
   }
 
 }
 
-module.exports = PdfProvider
+module.exports = PDF

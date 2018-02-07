@@ -4,7 +4,7 @@ const PdfPrinter = require('pdfmake/src/printer')
 
 const defaultConfig = require('../../config/pdf.js')
 
-class Pdf  {
+class PDF  {
 
   constructor (Config) {
 
@@ -48,4 +48,4 @@ class Pdf  {
 
 }
 
-module.exports = Pdf
+module.exports = PDF
