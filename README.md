@@ -12,7 +12,7 @@ module.exports = {
   }
 }
 ```
-- Add `'adonis-pdf/providers/PdfProvider'` to `start/app.js`
+- Add `'adonis-pdf/providers/PdfProvider'` to the `providers` array within `start/app.js`
 
 ## Usage
 ```js
