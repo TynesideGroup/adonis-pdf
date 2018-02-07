@@ -15,4 +15,4 @@ class PDFProvider extends ServiceProvider {
 
 }
 
-module.exports = PDF
+module.exports = PDFProvider
