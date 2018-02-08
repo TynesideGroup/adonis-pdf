@@ -141,7 +141,11 @@ class PDF  {
   }
 
   _pipeTo (_stream) {
-    if (_stream instanceof stream.Readable || _stream instanceof stream.writeable) {
+    if (
+      _stream instanceof stream.Readable ||
+      _stream instanceof stream.Writable ||
+      _stream instanceof stream.Stream
+    ) {
       return this.document.pipe(_stream)
     } else {
       throw new Error('You may only pipe to a readable/writeable stream.')
