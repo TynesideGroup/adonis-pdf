@@ -163,7 +163,7 @@ class PDF  {
         this._finaliseDefinition(content)
         this._generatePDF()
         this._pipeTo(stream)
-        this._end()
+        return this._end()
       } else {
         throw new Error('Your PDF content must be an Array.')
       }

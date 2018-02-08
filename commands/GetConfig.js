@@ -36,7 +36,7 @@ class GetConfig extends Command {
       const configPath = this._getConfigPath()
       await this._ensureInProjectRoot()
       await this._generateConfigFile(join(configPath, 'pdf.js'))
-      this.completed('create', `${configPath}/pdf.js`)
+      this.completed('create', `${configPath}\\pdf.js`)
     } catch (error) {
       if (!this.viaAce) throw error
       this.error(error.message)
