@@ -15,25 +15,37 @@ module.exports = {
 - Add `'adonis-pdf/providers/PdfProvider'` to the `providers` array within `start/app.js`
 
 ## Usage
+`PDF.create()` accepts two parameters:
+
+* `definition`: Object representing the PDF content/styles etc
+* `stream`: A Readable or Writeable Stream the PDF will be piped to
+
+## Example
 ```js
 'use strict'
 
-const Pdf = use('Pdf')
+const PDF = use('PDF')
 
 class MyController {
 
   async generatePdf ({ response }) {
-    const pdf = new PDF({
-      // custom config (this will override config/pdf.js )
-    })
-    const doc = Pdf.create({
-      content: [
-        { text: 'test' }
-      ]
-    })
 
-    doc.pipe(response.response)
-    doc.end()
+    const definition = {
+      content: [
+        {
+          text: 'test',
+          style: 'header'
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 22,
+          bold: true
+        }
+      }
+    }
+
+    PDF.create(definition, response.response)
 
     return response
   }

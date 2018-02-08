@@ -42,7 +42,7 @@ class PDF  {
 
   create (content, stream) {
     if (typeof content === 'object') {
-      this.document = this.printer.createPdfKitDocument(content)
+      this.document = this.printer.createPdfKitDocument({ content: content })
       this.document.pipe(stream)
       this.document.end()
     } else {
