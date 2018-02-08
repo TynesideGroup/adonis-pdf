@@ -2,7 +2,7 @@
 
 Service provider for building PDFs using [pdfmake](http://pdfmake.org/).
 
-:bangbang: WARNING! This package is heavily in development and is therefore unstable. It may not work correctly or at all. When it is working the way that it needs to I will bump it up to 0.1.0!
+:exclamation: **WARNING! This package is heavily in development and is therefore unstable. It may not work correctly or at all. When it is working the way that it needs to I will bump it up to 0.1.0!**
 
 ## Installation
 * Run `npm i adonis-pdf` or `yarn add adonis-pdf`
