@@ -1,5 +1,7 @@
 'use strict'
 
+const stream = require('stream')
+
 const PdfPrinter = require('pdfmake/src/printer')
 
 const defaultConfig = require('../../config/pdf.js')
@@ -38,9 +40,11 @@ class PDF  {
     )
   }
 
-  create (content) {
+  create (content, stream) {
     if (typeof content === 'object') {
-      return this.printer.createPdfKitDocument(content)
+      return this.document = this.printer.createPdfKitDocument(content)
+      this.document.pipe(stream)
+      this.document.end()
     } else {
       throw { status: 'error', message: 'PDF content must be an Object' }
     }
