@@ -22,7 +22,7 @@ class GetConfig extends Command {
     }
   }
 
-  async _getConfigPath () {
+  _getConfigPath () {
     return join(process.cwd(), 'config')
   }
 
@@ -34,10 +34,9 @@ class GetConfig extends Command {
   async handle () {
     try {
       const configPath = this._getConfigPath()
-
       await this._ensureInProjectRoot()
       await this._generateConfigFile(join(configPath, 'pdf.js'))
-      this.completed('create', )
+      this.completed('create', `${configPath}/pdf.js`)
     } catch (error) {
       if (!this.viaAce) throw error
       this.error(error.message)
