@@ -30,7 +30,7 @@ By default all configuration options are `null` (i.e. we use the pdfmake default
 ## Usage
 Add `const PDF = use('PDF')` to whatever file you wish to use it, then call `PDF.create()`. This method accepts two parameters:
 
-* `definition`: Object representing the PDF content/styles etc
+* `content`: Array representing the PDF content
 * `stream`: A Readable or Writeable Stream the PDF will be piped to
 
 ## Example
@@ -43,22 +43,11 @@ class MyController {
 
   async generatePdf ({ response }) {
 
-    const definition = {
-      content: [
-        {
-          text: 'test',
-          style: 'header'
-        }
-      ],
-      styles: {
-        header: {
-          fontSize: 22,
-          bold: true
-        }
-      }
-    }
+    const content = [
+      { text: 'test' }
+    ]
 
-    PDF.create(definition, response.response)
+    PDF.create(content, response.response)
 
     return response
   }
