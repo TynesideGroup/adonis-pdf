@@ -40,6 +40,7 @@ class PDF  {
             }
           }
     )
+    this.definition = {}
   }
 
   _configureStyles () {
