@@ -13,7 +13,7 @@ class PDF  {
 
   _setupPrinter () {
     this.printer = new PdfPrinter(
-      typeof this.options.fonts === 'object'
+      (this.options.fonts !== null && typeof this.options.fonts === 'object')
         ? this.options.fonts
         : {
             Roboto: {
