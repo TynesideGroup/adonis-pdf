@@ -1,6 +1,6 @@
 {
   "name": "adonis-pdf",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Create PDF files within Adonis using pdfmake",
   "main": "index.js",
   "repository": {
