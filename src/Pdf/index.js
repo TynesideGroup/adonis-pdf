@@ -140,9 +140,9 @@ class PDF  {
     return this.document = this.printer.createPdfKitDocument(this.definition)
   }
 
-  _pipeTo (stream) {
-    if (stream instanceof stream.Readable || stream instanceof stream.writeable) {
-      return this.document.pipe(stream)
+  _pipeTo (_stream) {
+    if (_stream instanceof stream.Readable || _stream instanceof stream.writeable) {
+      return this.document.pipe(_stream)
     } else {
       throw new Error('You may only pipe to a readable/writeable stream.')
     }
