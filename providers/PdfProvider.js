@@ -13,12 +13,17 @@ class PDFProvider extends ServiceProvider {
   }
 
   _registerCommands () {
-    this.app.bind('Adonis/Commands/PDF:GetConfig', (app) => require('../commands/GetConfig'))
+    this.app.bind('PDF:GetConfig', (app) => require('../commands/GetConfig'))
   }
 
   register () {
     this._registerPDF()
     this._registerCommands()
+  }
+
+  boot () {
+    const ace = require('@adonisjs/ace')
+    ace.addCommand('PDF:GetConfig')
   }
 
 }
