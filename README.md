@@ -15,7 +15,7 @@ module.exports = {
 - Add `'adonis-pdf/providers/PdfProvider'` to the `providers` array within `start/app.js`
 
 ## Usage
-`PDF.create()` accepts two parameters:
+Add `const PDF = use('PDF')` to whatever file you wish to use it, then call `PDF.create()`. This method accepts two parameters:
 
 * `definition`: Object representing the PDF content/styles etc
 * `stream`: A Readable or Writeable Stream the PDF will be piped to
