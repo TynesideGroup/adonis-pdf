@@ -4,11 +4,13 @@ const { join } = require('path')
 const stream = require('stream')
 const PdfPrinter = require('pdfmake/src/printer')
 const defaultConfig = require('../../config/pdf.js')
+const ContentBuilder = require('./content-builder')
 
 class PDF  {
 
   constructor (Config) {
     this.options = Config.merge('pdf', defaultConfig)
+    this.builder = new ContentBuilder()
   }
 
   _setupPrinter () {
@@ -116,12 +118,14 @@ class PDF  {
     if (this._hasPageConfigurationOption('margins')) {
       if (
         Array.isArray(this.options.page.margins) &&
-        (this.options.page.margins.length === 2 || this.options.page.margins.length === 4)
+        (this.options.page.margins.length !== 2 || this.options.page.margins.length !== 4)
       ) {
-        this.definition.pageMargins = this.options.page.margins
-      } else {
-        throw new Error('page.margin configuration must be an Array of either [left, top, right, bottom] or [horizontal, vertical]')
+        throw new Error('page.margin configuration must be either [left, top, right, bottom] or [horizontal, vertical] if configured as an Array')
       }
+      if (typeof this.options.page.margins !== 'number') {
+        throw new Error('page.margin configuration must be either an Array or Number')
+      }
+      this.definition.pageMargins = this.options.page.margins
     }
   }
 
@@ -160,12 +164,12 @@ class PDF  {
     return typeof prop === type
   }
 
-  create (content, stream) {
+  create (content = null, stream) {
     try {
       if (Array.isArray(content)) {
         this._setupPrinter()
         this._applyConfiguration()
-        this._finaliseDefinition(content)
+        this._finaliseDefinition(content !== null ? content : this.Builder.finalise())
         this._generatePDF()
         this._pipeTo(stream)
         return this._end()
@@ -176,6 +180,8 @@ class PDF  {
       throw { status: 'error', error: error }
     }
   }
+
+  build
 
 }
 
