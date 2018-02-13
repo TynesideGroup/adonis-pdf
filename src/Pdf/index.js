@@ -160,14 +160,14 @@ class PDF  {
     return typeof prop === type
   }
 
-  create (content, stream) {
+  create (_content, _stream) {
     try {
-      if (Array.isArray(content)) {
+      if (Array.isArray(_content)) {
         this._setupPrinter()
         this._applyConfiguration()
-        this._finaliseDefinition(content)
+        this._finaliseDefinition(_content)
         this._generatePDF()
-        this._pipeTo(stream)
+        this._pipeTo(_stream)
         return this._end()
       } else {
         throw new Error('Your PDF content must be an Array.')
