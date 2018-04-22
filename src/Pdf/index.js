@@ -130,6 +130,9 @@ class PDF  {
     this._configureHeader()
     this._configureFooter()
     this._configureBackground()
+    this._configurePageSize()
+    this._configurePageOrientation()
+    this._configurePageMargins()
   }
 
   _finaliseDefinition (content) {
