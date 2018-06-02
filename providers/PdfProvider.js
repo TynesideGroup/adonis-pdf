@@ -7,7 +7,7 @@ class PDFProvider extends ServiceProvider {
   _registerPDF () {
     this.app.singleton('PDF', (app) => {
       const Config = app.use('Adonis/Src/Config')
-      const PDF = require('../src/PDF')
+      const PDF = require('../src/pdf2')
       return new PDF(Config)
     })
   }
