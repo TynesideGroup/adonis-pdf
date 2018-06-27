@@ -86,10 +86,10 @@ class PDF  {
 
   _configurePageSize () {
     if (this._hasPageConfigurationOption('size')) {
-      if (this_.isOfType(this.options.page.size, 'string')) {
+      if (this._isOfType(this.options.page.size, 'string')) {
         this.definition.pageSize = this.options.page.size
       }
-      if (this_.isOfType(this.options.page.size, 'object')) {
+      if (this._isOfType(this.options.page.size, 'object')) {
         if (
           this.options.page.size.hasOwnProperty('width') &&
           this.options.page.size.hasOwnProperty('height')
@@ -130,6 +130,7 @@ class PDF  {
     this._configureHeader()
     this._configureFooter()
     this._configureBackground()
+    this._configurePageOrientation()
   }
 
   _finaliseDefinition (content) {
