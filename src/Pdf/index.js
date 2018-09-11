@@ -160,18 +160,25 @@ class PDF  {
     return typeof prop === type
   }
 
-  create (_content, _stream) {
+  create (content, stream = undefined) {
     try {
-      if (Array.isArray(_content)) {
-        this._setupPrinter()
-        this._applyConfiguration()
-        this._finaliseDefinition(_content)
-        this._generatePDF()
-        this._pipeTo(_stream)
-        return this._end()
-      } else {
+      if (!Array.isArray(content)) {
         throw new Error('Your PDF content must be an Array.')
       }
+
+      this._setupPrinter()
+      this._applyConfiguration()
+      this._finaliseDefinition(content)
+      this._generatePDF()
+
+      // Pipe the content to the stream if a stream is provided
+      if (stream) {
+        this._pipeTo(stream)
+      }
+
+      this._end()
+
+      return this.document
     } catch (error) {
       throw { status: 'error', error: error }
     }
