@@ -6,7 +6,7 @@ Service provider for building PDFs using [pdfmake](http://pdfmake.org/).
 
 ## Installation
 * Run `npm i adonis-pdf` or `yarn add adonis-pdf`
-* Add `'adonis-pdf/providers/PdfProvider'` to the `providers` array within `start/app.js`
+* Add `'adonis-pdf/providers/PDFProvider'` to the `providers` array within `start/app.js`
 
 ## Configuration
 Configuration is done through `config/pdf.js`. This file should have automatically been copied to your project during installation if you installed it via adonis-cli. If you installed it with npm or Yarn, or the file was not copied across correctly, you may copy the [config file](config/pdf.js) from this package or run the following command to create it:
